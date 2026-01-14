@@ -97,6 +97,76 @@ python evaluate.py
 python inference.py
 ```
 
+#### 🌐 Запуск веб-интерфейса (Streamlit):
+```bash
+streamlit run app.py
+```
+
+#### 🚀 Запуск API (FastAPI):
+```bash
+cd src
+uvicorn api:app --reload
+# API документация доступна по адресу: http://localhost:8000/docs
+```
+
+#### 🐳 Запуск с Docker:
+```bash
+# Обучение модели
+docker-compose up train
+
+# API сервис
+docker-compose up api
+
+# Streamlit UI
+docker-compose up streamlit
+```
+
+#### 🧪 Запуск тестов:
+```bash
+# Все тесты
+make test
+
+# С coverage
+make test-cov
+
+# Или напрямую с pytest
+pytest tests/ -v
+```
+
+---
+
+## 🆕 Новые возможности
+
+### ✅ CI/CD Pipeline
+- GitHub Actions для автоматического тестирования
+- Линтинг кода (flake8, black)
+- Code coverage reporting
+
+### ✅ Тестирование
+- Unit тесты для всех модулей
+- Test coverage > 80%
+- Fixtures для удобного тестирования
+
+### ✅ Конфигурация
+- Централизованный `config.yaml`
+- Управление гиперпараметрами
+- Легкая настройка для разных окружений
+
+### ✅ Валидация данных
+- Автоматическая проверка схемы данных
+- Валидация диапазонов значений
+- Обнаружение аномалий
+
+### ✅ API и UI
+- REST API с FastAPI
+- Интерактивный веб-интерфейс с Streamlit
+- Swagger документация
+
+### ✅ Docker
+- Контейнеризация всего приложения
+- Docker Compose для оркестрации
+- Готово к deployment
+
 ---
 
 ## 📊 Результаты
@@ -177,11 +247,16 @@ python inference.py
 
 ## 📈 Roadmap
 
-- [ ] Добавить SHAP analysis для интерпретируемости
-- [ ] Создать веб-интерфейс (Streamlit/FastAPI)
-- [ ] Dockerize приложение
-- [ ] CI/CD pipeline
-- [ ] Мониторинг модели в продакшене
+- [x] Добавить SHAP analysis для интерпретируемости
+- [x] Создать веб-интерфейс (Streamlit/FastAPI)
+- [x] Dockerize приложение
+- [x] CI/CD pipeline
+- [x] Unit тесты и code coverage
+- [x] Конфигурация и логирование
+- [x] Data validation
+- [ ] Мониторинг модели в продакшене (MLflow)
+- [ ] A/B тестирование
+- [ ] Data drift detection
 
 ---
 
@@ -198,6 +273,42 @@ python inference.py
 ## 📄 Лицензия
 
 Этот проект использует лицензию MIT. Подробности в файле [LICENSE](LICENSE).
+
+---
+
+## 🤝 Contributing
+
+Мы приветствуем вклад в проект! Пожалуйста, ознакомьтесь с [CONTRIBUTING.md](CONTRIBUTING.md) для получения информации о:
+
+- Как сообщить о баге
+- Как предложить улучшение
+- Стиль кодирования
+- Процесс pull request
+
+### Quick Start для разработчиков:
+
+```bash
+# Установить dev зависимости
+make install-dev
+
+# Установить pre-commit hooks
+pre-commit install
+
+# Запустить все проверки
+make lint
+make test
+
+# Форматировать код
+make format
+```
+
+---
+
+## 📖 Дополнительная документация
+
+- **[PROJECT_ANALYSIS.md](PROJECT_ANALYSIS.md)** - Подробный анализ проекта с рекомендациями
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Руководство для контрибьюторов
+- **API Docs** - Автоматическая документация доступна по адресу `/docs` при запуске API
 
 ---
 

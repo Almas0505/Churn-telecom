@@ -59,4 +59,17 @@ reports/figures/*.png
 Thumbs.db
 
 # Logs
+logs/
+*.log
+
+# Coverage
+htmlcov/
+.coverage
+coverage.xml
+.pytest_cache/
+
+# Mypy
+.mypy_cache/
+
+# Logs
 *.log
