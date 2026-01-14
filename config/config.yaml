@@ -1,0 +1,79 @@
+# Configuration for Churn Prediction Project
+
+# Data paths
+data:
+  raw_path: 'data/raw/WA_Fn-UseC_-Telco-Customer-Churn.csv'
+  processed_path: 'data/processed'
+  test_size: 0.2
+  random_state: 42
+
+# Preprocessing settings
+preprocessing:
+  use_smote: true
+  smote_strategy: 'auto'
+  smote_k_neighbors: 5
+  scaling_method: 'standard'  # Options: 'standard', 'minmax', 'robust'
+
+# Model settings
+model:
+  type: 'xgboost'  # Options: 'xgboost', 'random_forest', 'gradient_boosting'
+  params:
+    xgboost:
+      n_estimators: 100
+      max_depth: 5
+      learning_rate: 0.1
+      subsample: 0.8
+      colsample_bytree: 0.8
+      eval_metric: 'logloss'
+      random_state: 42
+    random_forest:
+      n_estimators: 100
+      max_depth: 15
+      min_samples_split: 2
+      min_samples_leaf: 1
+      random_state: 42
+    gradient_boosting:
+      n_estimators: 100
+      max_depth: 5
+      learning_rate: 0.1
+      subsample: 0.8
+      random_state: 42
+
+# Training settings
+training:
+  cv_folds: 5
+  scoring: 'roc_auc'
+  shuffle: true
+
+# Feature engineering
+features:
+  create_tenure_groups: true
+  tenure_bins: [0, 12, 24, 48, 72]
+  tenure_labels: ['0-1 year', '1-2 years', '2-4 years', '4+ years']
+  binary_encoding_cols: ['Partner', 'Dependents', 'PhoneService', 'PaperlessBilling']
+
+# Output paths
+output:
+  models_dir: 'models'
+  reports_dir: 'reports'
+  figures_dir: 'reports/figures'
+  logs_dir: 'logs'
+
+# Logging
+logging:
+  level: 'INFO'  # Options: 'DEBUG', 'INFO', 'WARNING', 'ERROR'
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  log_to_file: true
+  log_file: 'logs/churn_prediction.log'
+
+# API settings (for future use)
+api:
+  host: '0.0.0.0'
+  port: 8000
+  reload: false
+
+# Monitoring (for future use)
+monitoring:
+  enable_mlflow: false
+  mlflow_tracking_uri: 'http://localhost:5000'
+  experiment_name: 'churn_prediction'
